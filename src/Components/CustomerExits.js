@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const CustomerExits = (props) => {
   const history = useNavigate();
   const navigate = () => {
-    history("/");
+    history("/accruepoint");
   };
   return (
     <>

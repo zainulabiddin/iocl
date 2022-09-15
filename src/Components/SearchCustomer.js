@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SearchCustomer = () => {
   const [mobile, setMobile] = useState("");
-  const [ErrorMessage, setErrorMessage] = useState("");
   const history = useNavigate();
 
   // useEffect(() => {
@@ -11,22 +11,18 @@ const SearchCustomer = () => {
   //   }
   // });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let result = await fetch(
-      "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/GetMemberBalance",
-      {
-        method: "post",
-        body: JSON.stringify({ mobile, ErrorMessage }),
-        headers: {
-          "Content-Type": "application/json",
-          //   Accept: "*/*",
-        },
-      }
-    );
-    result = await result.json();
-    console.warn(result);
-    console.log(result.ErrorMessage);
+    axios
+      .post(
+        "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/GetMemberBalance",
+        {
+          mobile,
+        }
+      )
+      .then((res) => console.log(`Posting data`, res))
+      .catch((err) => console.log(err));
+
     mobile === "9876543301"
       ? history("/customerexits")
       : history("/customernotexits");
@@ -70,7 +66,7 @@ const SearchCustomer = () => {
             </button>
           </div>
         </div>
-        {ErrorMessage}
+
         {/* </div> */}
         {/* {mobile === "8096958087"
           ? history("/customerexits")

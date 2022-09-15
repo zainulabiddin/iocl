@@ -3,8 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 const IoclDetails = () => {
   const history = useNavigate();
-  const navigate = () => {
+  const search = () => {
     history("/searchcustomer");
+  };
+  const onboard = () => {
+    history("/onboardcustomer");
+  };
+  const accrue = () => {
+    history("/accruepoint");
   };
   return (
     <>
@@ -17,16 +23,26 @@ const IoclDetails = () => {
         <div className="row">
           <div className="d-grid gap-4 col-7 col-xs-7 col-sm-6 col-md-4 mx-auto mt-5">
             <button
-              onClick={navigate}
+              onClick={search}
               className="btn btn-lg border-radius"
               type="button"
             >
               Search Customer
             </button>
-            <button className="btn btn-lg border-radius" type="button">
+            <button
+              disabled
+              onClick={onboard}
+              className="btn btn-lg border-radius"
+              type="button"
+            >
               Onboard Customer
             </button>
-            <button className="btn btn-lg border-radius" type="button">
+            <button
+              disabled
+              onClick={accrue}
+              className="btn btn-lg border-radius"
+              type="button"
+            >
               Accrue Loyalty Point
             </button>
           </div>

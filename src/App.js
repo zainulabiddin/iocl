@@ -6,6 +6,8 @@ import IoclDetails from "./Components/IoclDetails";
 import SearchCustomer from "./Components/SearchCustomer";
 import CustomerExits from "./Components/CustomerExits";
 import CustomerNotExits from "./Components/CustomerNotExits";
+import OnboardCustomer from "./Components/OnboardCustomer";
+import AccruePoint from "./Components/AccruePoint";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
           <Route path="/searchcustomer" element={<SearchCustomer />} />
           <Route path="/customerexits" element={<CustomerExits />} />
           <Route path="/customernotexits" element={<CustomerNotExits />} />
+          <Route path="/onboardcustomer" element={<OnboardCustomer />} />
+          <Route path="/accruepoint" element={<AccruePoint />} />
         </Routes>
       </BrowserRouter>
     </>

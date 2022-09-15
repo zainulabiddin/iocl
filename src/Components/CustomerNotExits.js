@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 const CustomerNotExits = (props) => {
   const history = useNavigate();
-  const navigate = () => {
+  const home = () => {
     history("/");
+  };
+  const onboard = () => {
+    history("/onboardcustomer");
   };
   return (
     <>
@@ -25,7 +28,7 @@ const CustomerNotExits = (props) => {
           </div>
           <div className="col-sm-5 offset-sm-3">
             <button
-              onClick={navigate}
+              onClick={onboard}
               className="btn btn-lg border-radius"
               type="button"
             >
@@ -34,7 +37,7 @@ const CustomerNotExits = (props) => {
           </div>
           <div className="col-sm-5 offset-sm-1 mt-3">
             <button
-              onClick={navigate}
+              onClick={home}
               className="btn btn-lg border-radius"
               type="button"
             >
