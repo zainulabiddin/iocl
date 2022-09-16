@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const CustomerExits = (props) => {
+const CustomerSuccess = (props) => {
   const history = useNavigate();
   const navigate = () => {
     history("/accruepoint");
@@ -12,15 +12,15 @@ const CustomerExits = (props) => {
         <div className="row">
           <div className="col-md-12 text-center">
             <h2 className="Heading-text">IOCL Loyalty System</h2>
-            <h2 className="">Search Customer</h2>
+            <h2 className="">Onboard Customer</h2>
           </div>
         </div>
 
         <div className="mt-5 row">
           <div className="col-md-12">
             <p className="text-center">
-              Customer Mobile Number {props.mobile} already exists in Loyalty
-              System
+              Customer Mobile Number {props.mobile} Successfully added/updated
+              in Loyalty System
             </p>
           </div>
           <div className="col-md-5 offset-sm-4">
@@ -38,4 +38,4 @@ const CustomerExits = (props) => {
   );
 };
 
-export default CustomerExits;
+export default CustomerSuccess;

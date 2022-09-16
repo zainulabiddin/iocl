@@ -14,37 +14,37 @@ const IoclDetails = () => {
   };
   return (
     <>
-      <div className="container">
+      <div className="container containerR">
         <div className="row">
-          <div className="col-sm-12 text-center mt-5">
-            <h2 className="Heading-text">IOCL Loyalty System</h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="d-grid gap-4 col-7 col-xs-7 col-sm-6 col-md-4 mx-auto mt-5">
-            <button
-              onClick={search}
-              className="btn btn-lg border-radius"
-              type="button"
-            >
-              Search Customer
-            </button>
-            <button
-              disabled
-              onClick={onboard}
-              className="btn btn-lg border-radius"
-              type="button"
-            >
-              Onboard Customer
-            </button>
-            <button
-              disabled
-              onClick={accrue}
-              className="btn btn-lg border-radius"
-              type="button"
-            >
-              Accrue Loyalty Point
-            </button>
+          <div className="col-sm-12 text-center">
+            <div className="">
+              <h2 className="Heading-text">IOCL Loyalty System</h2>
+              <div className="d-grid gap-4 col-md-6 col-sm-12 col-xs-8 col-12 mx-auto mt-5">
+                <button
+                  onClick={search}
+                  className="btn btn-lg border-radius"
+                  type="button"
+                >
+                  Search Customer
+                </button>
+                {/* <button
+                  disabled
+                  onClick={onboard}
+                  className="btn btn-lg border-radius"
+                  type="button"
+                >
+                  Onboard Customer
+                </button> */}
+                {/* <button
+                  disabled
+                  onClick={accrue}
+                  className="btn btn-lg border-radius"
+                  type="button"
+                >
+                  Accrue Loyalty Point
+                </button> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>

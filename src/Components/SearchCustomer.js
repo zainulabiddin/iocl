@@ -17,60 +17,59 @@ const SearchCustomer = () => {
       .post(
         "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/GetMemberBalance",
         {
-          mobile,
+          member_number: "",
+          mobile: mobile,
         }
       )
-      .then((res) => console.log(`Posting data`, res))
+      .then((res) => {
+        console.log(res);
+        if (res.data.ErrorMessage === "Success") {
+          // alert("Please fill the Mobile Number");
+          history("/customerexits");
+        } else {
+          history("/customernotexits");
+        }
+      })
       .catch((err) => console.log(err));
-
-    mobile === "9876543301"
-      ? history("/customerexits")
-      : history("/customernotexits");
   };
 
   return (
     <>
-      <div className="container">
+      <div className="container containerR">
         <div className="row">
-          <div className="col-sm-12 text-center mt-5">
-            <h2 className="Heading-text">IOCL Loyalty System</h2>
-            <h2 className="">Search Customer</h2>
+          <div className="col-sm-12 text-center">
+            <div className="">
+              <h2 className="Heading-text">IOCL Loyalty System</h2>
+              <h2 className="">Search Customer</h2>
+
+              <label
+                htmlFor="inputPassword"
+                className="col-md-6 col-form-label textL mt-5"
+              >
+                Enter Customer Mobile Number<span>*</span>
+              </label>
+              <div className="col-md-6 offset-md-3 mt-1">
+                <input
+                  type="text"
+                  value={mobile}
+                  autoComplete="off"
+                  onChange={(e) => setMobile(e.target.value)}
+                  className="form-control"
+                  id="inputPassword"
+                />
+              </div>
+              <div className="col-md-4 offset-md-4 mt-3">
+                <button
+                  onClick={handleSubmit}
+                  className="btn btn-lg border-radius"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div className="mt-5 row justify-content-center">
-          <label
-            htmlFor="inputPassword"
-            className="col-4 col-xs-4 col-sm-5 col-md-4 col-form-label textR"
-          >
-            Enter Customer Mobile Number <span>*</span>
-          </label>
-          <div className="col-4 col-xs-4 col-sm-5 col-md-3">
-            <input
-              type="text"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-              className="form-control"
-              id="inputPassword"
-            />
-          </div>
-
-          {/* <div className="row justify-content-center mt-3"> */}
-          <div className="col-3 offset-3 col-md-3 offset-md-3 col-sm-3 offset-sm-1 col-3 offset-1 mt-3">
-            <button
-              onClick={handleSubmit}
-              className="btn btn-lg border-radius"
-              type="submit"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-
-        {/* </div> */}
-        {/* {mobile === "8096958087"
-          ? history("/customerexits")
-          : history("/customernotexits")} */}
       </div>
     </>
   );

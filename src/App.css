@@ -5,7 +5,7 @@
 }
 
 .border-radius{
-  border-radius:1rem 0rem 1rem 0rem !important;
+  border-radius:.2rem .2rem .2rem .2rem !important;
   background-color: #66c3cf !important;
   
 }
@@ -18,11 +18,17 @@
 .textR{
   text-align: right;
 }
+.textL{
+  text-align: center;
+}
 .textRT{
  margin-top: -1rem !important;
  text-align: right;
 }
 .textR span{
+  color:red;
+}
+.textL span{
   color:red;
 }
 .textRT span{
@@ -44,3 +50,23 @@
     border-radius: 0.375rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+/* .borderR{
+  border:2px dashed black;
+  padding:10px;
+  width:50%;
+  height:400px;
+  margin: auto;
+  border-radius: 10px;
+} */
+
+.containerR{
+  position: relative;
+  top:3rem;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 50% !important;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
