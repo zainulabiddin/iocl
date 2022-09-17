@@ -12,7 +12,7 @@ const CustomerSuccess = (props) => {
         <div className="row">
           <div className="col-md-12 text-center">
             <h2 className="Heading-text">IOCL Loyalty System</h2>
-            <h2 className="">Onboard Customer</h2>
+            <h3 className="">Onboard Customer</h3>
           </div>
         </div>
 

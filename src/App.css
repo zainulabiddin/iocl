@@ -3,17 +3,22 @@
   padding:0;
   box-sizing: border-box;
 }
+body{
+  background-color: #252b25 !important;
+}
 
 .border-radius{
   border-radius:.2rem .2rem .2rem .2rem !important;
-  background-color: #66c3cf !important;
+  background-color: #207883 !important;
+  color:#fff !important
   
 }
 .border-radius:hover{
   background-color: #66c3cf !important;
+  color:#000 !important
 }
 .Heading-text{
-  color: #3195a2;
+  color: #207883;
 }
 .textR{
   text-align: right;
@@ -37,7 +42,7 @@
 
 .form-select{
   display: block;
-    width: 15rem !important;
+   
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
@@ -63,10 +68,11 @@
 .containerR{
   position: relative;
   top:3rem;
-  border: 2px solid black;
+  border: 2px solid rgb(27, 196, 252);
   border-radius: 10px;
   width: 50% !important;
   padding-top: 30px;
   padding-bottom: 50px;
+  background-color: #fff !important;
 }
 

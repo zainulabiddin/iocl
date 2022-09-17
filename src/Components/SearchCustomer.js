@@ -4,7 +4,12 @@ import axios from "axios";
 
 const SearchCustomer = () => {
   const [mobile, setMobile] = useState("");
-  const history = useNavigate();
+
+  const navigate = useNavigate();
+
+  const backHome = () => {
+    navigate("/");
+  };
 
   // useEffect(() => {
   //   if (localStorage.getItem("user-info")) {
@@ -25,9 +30,9 @@ const SearchCustomer = () => {
         console.log(res);
         if (res.data.ErrorMessage === "Success") {
           // alert("Please fill the Mobile Number");
-          history("/customerexits");
+          navigate("/customerexits");
         } else {
-          history("/customernotexits");
+          navigate("/customernotexits");
         }
       })
       .catch((err) => console.log(err));
@@ -37,10 +42,10 @@ const SearchCustomer = () => {
     <>
       <div className="container containerR">
         <div className="row">
-          <div className="col-sm-12 text-center">
+          <div className="col-xs-12 col-md-12 col-sm-12 text-center">
             <div className="">
               <h2 className="Heading-text">IOCL Loyalty System</h2>
-              <h2 className="">Search Customer</h2>
+              <h3 className="">Search Customer</h3>
 
               <label
                 htmlFor="inputPassword"
@@ -65,6 +70,15 @@ const SearchCustomer = () => {
                   type="submit"
                 >
                   Submit
+                </button>
+              </div>
+              <div className="col-md-12 mt-3">
+                <button
+                  onClick={backHome}
+                  className="btn btn-lg border-radius"
+                  type="submit"
+                >
+                  Go Back to Home
                 </button>
               </div>
             </div>

@@ -2,9 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const CustomerExits = (props) => {
-  const history = useNavigate();
-  const navigate = () => {
-    history("/accruepoint");
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/accruepoint");
   };
   return (
     <>
@@ -12,7 +13,7 @@ const CustomerExits = (props) => {
         <div className="row">
           <div className="col-md-12 text-center">
             <h2 className="Heading-text">IOCL Loyalty System</h2>
-            <h2 className="">Search Customer</h2>
+            <h3 className="">Search Customer</h3>
           </div>
         </div>
 
@@ -25,7 +26,7 @@ const CustomerExits = (props) => {
           </div>
           <div className="col-md-5 offset-sm-4">
             <button
-              onClick={navigate}
+              onClick={goHome}
               className="btn btn-lg border-radius"
               type="button"
             >

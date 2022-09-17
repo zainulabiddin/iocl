@@ -3,23 +3,31 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function OnboardCustomer() {
-  const [mobile, setMobile] = useState("");
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastname] = useState("");
-  const [dob, setDOB] = useState("");
-  const [vehicle, setVehicle] = useState("");
+  const initialValues = {
+    mobile: "",
+    firstName: "",
+    lastName: "",
+    dob: "",
+    vehicle: "",
+  };
+  const [userValues, setUserValues] = useState(initialValues);
+
   const history = useNavigate();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserValues({ ...userValues, [name]: value });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(
         "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/MemberService",
         {
-          first_name: "",
-          last_name: "",
-          dob: "",
-          mobile: "",
-          vehicle: "",
+          first_name: userValues.firstName,
+          last_name: userValues.lastName,
+          dob: userValues.dob,
+          mobile: userValues.mobile,
+          vehicle: userValues.vehicle,
         }
       )
       .then((res) => {
@@ -37,11 +45,11 @@ function OnboardCustomer() {
         <div className="row">
           <div className="col-sm-12 text-center">
             <h2 className="Heading-text">IOCL Loyalty System</h2>
-            <h2 className="">Onboard Customer</h2>
+            <h3 className="">Onboard Customer</h3>
           </div>
         </div>
 
-        <div className="mt-5 row justify-content-center">
+        <div className="mt-5 row">
           <label
             htmlFor="inputPassword1"
             className="col-sm-6 col-form-label textR"
@@ -50,10 +58,10 @@ function OnboardCustomer() {
           </label>
           <div className="col-sm-6">
             <input
-              style={{ width: "15rem" }}
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstname(e.target.value)}
+              name="firstName"
+              value={userValues.firstName}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword1"
             />
@@ -67,10 +75,10 @@ function OnboardCustomer() {
           </label>
           <div className="col-sm-6 mt-3">
             <input
-              style={{ width: "15rem" }}
               type="text"
-              value={lastName}
-              onChange={(e) => setLastname(e.target.value)}
+              name="lastName"
+              value={userValues.lastName}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword2"
             />
@@ -84,10 +92,10 @@ function OnboardCustomer() {
           </label>
           <div className="col-sm-6 mt-3">
             <input
-              style={{ width: "15rem" }}
               type="date"
-              value={dob}
-              onChange={(e) => setDOB(e.target.value)}
+              name="dob"
+              value={userValues.dob}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword3"
             />
@@ -101,10 +109,10 @@ function OnboardCustomer() {
           </label>
           <div className="col-sm-6 mt-3">
             <input
-              style={{ width: "15rem" }}
               type="text"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
+              name="mobile"
+              value={userValues.mobile}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword4"
             />
@@ -118,17 +126,17 @@ function OnboardCustomer() {
           </label>
           <div className="col-sm-6 mt-3">
             <input
-              style={{ width: "15rem" }}
               type="text"
-              value={vehicle}
-              onChange={(e) => setVehicle(e.target.value)}
+              name="vehicle"
+              value={userValues.vehicle}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword5"
             />
           </div>
 
           {/* <div className="row justify-content-center mt-3"> */}
-          <div className="col-3 offset-3 col-md-3 offset-md-3 col-sm-3 offset-sm-1 col-3 offset-1 mt-3">
+          <div className="col-3 offset-3 col-md-3 offset-md-6 col-sm-3 offset-sm-1 col-3 offset-1 mt-3">
             <button
               onClick={handleSubmit}
               className="btn btn-lg border-radius"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AccruePoint() {
   const [memberNumber, setMemberNumber] = useState("");
@@ -10,6 +11,10 @@ function AccruePoint() {
   const [transactionType, setTransactionType] = useState("");
   const [txnNumber, setTxnNumber] = useState("");
   const [dealerCode, setDealerCode] = useState("");
+  const navigate = useNavigate();
+  const backHome = () => {
+    navigate("/");
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -39,7 +44,7 @@ function AccruePoint() {
         <div className="row">
           <div className="col-md-12 text-center">
             <h2 className="Heading-text">IOCL Loyalty System</h2>
-            <h2 className="">Accrue Loyalty Point</h2>
+            <h3 className="">Accrue Loyalty Point</h3>
           </div>
         </div>
 
@@ -195,6 +200,15 @@ function AccruePoint() {
               type="submit"
             >
               Submit
+            </button>
+          </div>
+          <div className="col-3 offset-3 col-md-5 offset-md-6 col-sm-3 offset-sm-1 col-3 offset-1">
+            <button
+              onClick={backHome}
+              className="btn btn-lg border-radius"
+              type="submit"
+            >
+              Go Back to Home
             </button>
           </div>
         </div>
