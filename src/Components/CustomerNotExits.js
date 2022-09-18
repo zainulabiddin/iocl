@@ -29,7 +29,7 @@ const CustomerNotExits = () => {
                   Loyalty System
                 </p>
               </div>
-              <div className="col-md-9 offset-md-4 col-sm-9 offset-sm-3 justify-content-center mt-2">
+              <div className="col-md-12 text-center mt-3">
                 <button
                   onClick={onboard}
                   className="btn btn-lg border-radius"
@@ -38,10 +38,10 @@ const CustomerNotExits = () => {
                   Onboard Customer
                 </button>
               </div>
-              <div className=" col-md-9 offset-md-2 justify-content-center mt-2">
+              <div className="col-md-12 text-center mt-3">
                 <button
                   onClick={home}
-                  className="btn btn-lg border-radius"
+                  className="btn btn-sm border-radius"
                   type="button"
                 >
                   Customer Not Interested Go Back to Home

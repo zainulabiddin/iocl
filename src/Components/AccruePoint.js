@@ -3,40 +3,62 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AccruePoint() {
-  const [memberNumber, setMemberNumber] = useState("");
-  const [amount, setAmount] = useState("");
-  const [points, setPoints] = useState(1);
-  const [process, setProcess] = useState(null);
-  const [product, setProduct] = useState("");
-  const [transactionType, setTransactionType] = useState("");
-  const [txnNumber, setTxnNumber] = useState("");
-  const [dealerCode, setDealerCode] = useState("");
+  const initialValues1 = {
+    memberNumber: "1-5036481",
+    amount: "",
+    points: "1",
+    process: "null",
+    product: "",
+    transactionType: "Accrual",
+    txnNumber: "IOCL_0079",
+    dealerCode: "",
+  };
+
+  const [userValues1, setUserValues1] = useState(initialValues1);
   const navigate = useNavigate();
   const backHome = () => {
     navigate("/");
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserValues1({ ...userValues1, [name]: value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(
-        "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/CreateTransaction",
+        " https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/CreateTransaction",
         {
-          memberNumber,
-          amount,
-          points,
-          process,
-          product,
-          transactionType,
-          txnNumber,
-          dealerCode,
+          member_number: userValues1.memberNumber,
+          amount: userValues1.amount,
+          points: userValues1.points,
+          process: userValues1.process,
+          product: userValues1.product,
+          transaction_type: userValues1.transactionType,
+          txn_number: userValues1.txnNumber,
+          dealer_code: userValues1.dealerCode,
+          MemberNumber: userValues1.memberNumber,
         }
       )
-      .then((res) => console.log(`Posting data`, res))
-      .catch((err) => alert(err.ErrorMessage));
-
-    // mobile === "9876543301"
-    //   ? history("/customerexits")
-    //   : history("/customernotexits");
+      .then((res) => {
+        console.log(res);
+        if (res.data.ErrorMessage === "Duplicate Transaction") {
+          alert("Duplicate Transaction", res.data.ErrorMessage);
+          // navigate(
+          //   "/accuresuccess"
+          //   // { state: userValues.mobile },
+          // );
+        } else if (res.data.ErrorMessage === "No Member Found") {
+          alert("Success", res.data.ErrorMessage);
+          navigate(
+            "/accuresuccess"
+            // { state: userValues.mobile },
+          );
+        } else {
+          alert("all fields required", res.data.ErrorMessage);
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -51,20 +73,18 @@ function AccruePoint() {
         <div className="mt-5 row">
           <label
             htmlFor="inputPassword1"
-            className="col-md-6 col-form-label textRT"
+            className="col-12 col-md-6 col-form-label textRT"
           >
-            Enter Customer Membership Number
-            <br />
-            (Auto populated from previous <br />
-            transaction results otherwise empty, <br />
-            non editable) <span>*</span>
+            Enter Customer Membership Number (Auto populated from previous
+            transaction results otherwise empty, non editable) <span>*</span>
           </label>
           <div className="col-md-6">
             <input
               type="text"
               disabled
-              value={memberNumber}
-              onChange={(e) => setMemberNumber(e.target.value)}
+              name="memberNumber"
+              value={userValues1.memberNumber}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword1"
             />
@@ -72,15 +92,16 @@ function AccruePoint() {
 
           <label
             htmlFor="inputPassword2"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Enter Transaction Amount <span>*</span>
           </label>
-          <div className="col-md-6 mt-2">
+          <div className="col-md-6 inputMob">
             <input
               type="text"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
+              name="amount"
+              value={userValues1.amount}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword2"
             />
@@ -88,17 +109,18 @@ function AccruePoint() {
 
           <label
             htmlFor="inputPassword3"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Points (Populated By Default, non editable)
           </label>
-          <div className="col-md-6 mt-3">
+          <div className="col-md-6 inputMob">
             <input
               type="text"
               placeholder="1"
               disabled
-              value={points}
-              onChange={(e) => setPoints(e.target.value)}
+              name="points"
+              value={userValues1.points}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword3"
             />
@@ -106,17 +128,18 @@ function AccruePoint() {
 
           <label
             htmlFor="inputPassword4"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Process (Populated By Default, non editable)
           </label>
-          <div className="col-md-6 mt-3">
+          <div className="col-md-6 inputMob">
             <input
               type="text"
               placeholder="null"
               disabled
-              value={process}
-              onChange={(e) => setProcess(e.target.value)}
+              name="process"
+              value={userValues1.process}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword4"
             />
@@ -124,55 +147,62 @@ function AccruePoint() {
 
           <label
             htmlFor="inputPassword5"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Select Fuel Type <span>*</span>
           </label>
-          <div className="col-md-6 mt-3">
+          <div className="col-md-6 inputMob">
             <select
-              class="custom-select form-select"
+              name="product"
+              className="custom-select form-select"
               id="inputPassword5"
-              onChange={(e) => setProduct(e.target.value)}
+              onChange={handleChange}
             >
-              <option selected>
-                <i class="fa fa-angle-double-right"></i>Diesel
+              <option>
+                <i className="fa fa-angle-double-right"></i>Select
               </option>
-              <option value="Diesel">Diesel</option>
-              <option value="Petrol">Petrol</option>
+              <option selected values="Diesel">
+                Diesel
+              </option>
+              <option values="Petrol">Petrol</option>
             </select>
           </div>
 
           <label
             htmlFor="inputPassword6"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Select Transaction Type <span>*</span>
           </label>
-          <div className="col-md-6 mt-3">
+          <div className="col-md-6 inputMob">
             <select
-              class="custom-select form-select"
+              className="custom-select form-select"
+              name="transactionType"
+              value={userValues1.transactionType}
               id="inputPassword6"
-              onChange={(e) => setTransactionType(e.target.value)}
+              onChange={handleChange}
             >
-              <option selected>
-                <i class="fa fa-angle-double-right"></i>Accrual
+              <option>
+                <i className="fa fa-angle-double-right"></i>Select
               </option>
-              <option value="Accrual">Accrual</option>
+              <option selected value="Accrual">
+                Accrual
+              </option>
             </select>
           </div>
 
           <label
             htmlFor="inputPassword7"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Select Transaction Number <span>*</span>
           </label>
-          <div className="col-md-6 mt-3">
+          <div className="col-md-6 inputMob">
             <input
               type="text"
               disabled
-              value={txnNumber}
-              onChange={(e) => setTxnNumber(e.target.value)}
+              value={userValues1.txnNumber}
+              onChange={handleChange}
               className="form-control"
               id="inputPassword7"
             />
@@ -180,20 +210,21 @@ function AccruePoint() {
 
           <label
             htmlFor="inputPassword8"
-            className="col-md-6 col-form-label textR mt-2"
+            className="col-md-6 col-form-label textR"
           >
             Enter Dealer Code <span>*</span>
           </label>
-          <div className="col-md-6 mt-3">
+          <div className="col-md-6 inputMob">
             <input
               type="text"
-              value={dealerCode}
-              onChange={(e) => setDealerCode(e.target.value)}
+              value={userValues1.dealerCode}
+              name="dealerCode"
+              onChange={handleChange}
               className="form-control"
               id="inputPassword8"
             />
           </div>
-          <div className="col-md-4 offset-md-6 mt-3 mb-3">
+          <div className="col-md-12 text-center mt-3">
             <button
               onClick={handleSubmit}
               className="btn btn-lg border-radius"
@@ -202,10 +233,10 @@ function AccruePoint() {
               Submit
             </button>
           </div>
-          <div className="col-3 offset-3 col-md-5 offset-md-6 col-sm-3 offset-sm-1 col-3 offset-1">
+          <div className="col-md-12 text-center mt-3">
             <button
               onClick={backHome}
-              className="btn btn-lg border-radius"
+              className="btn btn-sm border-radius"
               type="submit"
             >
               Go Back to Home

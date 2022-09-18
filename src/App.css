@@ -30,6 +30,9 @@ body{
  margin-top: -1rem !important;
  text-align: right;
 }
+.textR{
+  margin-top:0.5rem !important;
+}
 .textR span{
   color:red;
 }
@@ -75,4 +78,33 @@ body{
   padding-bottom: 50px;
   background-color: #fff !important;
 }
+.inputMob{
+  margin-top:10px !important;
+}
 
+@media only screen and (max-width: 576px) {
+  
+ 
+  .inputMob{
+    margin-top:-0px !important;
+  }
+  .textR{
+    margin-top:0.5rem !important;
+  }
+ 
+}
+
+
+@media only screen and (max-width: 767px) {
+  
+    .textRT{
+text-align: center;
+    }
+    .textR{
+      text-align: center;
+    }
+    .textR{
+      margin-top:-4px !important;
+    }
+   
+}

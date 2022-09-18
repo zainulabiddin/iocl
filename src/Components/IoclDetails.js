@@ -6,12 +6,12 @@ const IoclDetails = () => {
   const search = () => {
     history("/searchcustomer");
   };
-  const onboard = () => {
-    history("/onboardcustomer");
-  };
-  const accrue = () => {
-    history("/accruepoint");
-  };
+  // const onboard = () => {
+  //   history("/onboardcustomer");
+  // };
+  // const accrue = () => {
+  //   history("/accruepoint");
+  // };
   return (
     <>
       <div className="container containerR">
@@ -19,7 +19,7 @@ const IoclDetails = () => {
           <div className="col-sm-12 text-center">
             <div className="">
               <h2 className="Heading-text">IOCL Loyalty System</h2>
-              <div className="d-grid gap-4 col-md-6 col-sm-12 col-xs-8 col-12 mx-auto mt-5">
+              <div className="col-md-12 text-center mt-5">
                 <button
                   onClick={search}
                   className="btn btn-lg border-radius"

@@ -50,7 +50,7 @@ const SearchCustomer = () => {
 
               <label
                 htmlFor="inputPassword"
-                className="col-md-6 col-form-label textL mt-5"
+                className="col-md-12 text-center col-form-label mt-5"
               >
                 Enter Customer Mobile Number<span>*</span>
               </label>
@@ -64,7 +64,7 @@ const SearchCustomer = () => {
                   id="inputPassword"
                 />
               </div>
-              <div className="col-md-4 offset-md-4 mt-3">
+              <div className="col-md-12 text-center mt-3">
                 <button
                   onClick={handleSubmit}
                   className="btn btn-lg border-radius"
@@ -73,10 +73,10 @@ const SearchCustomer = () => {
                   Submit
                 </button>
               </div>
-              <div className="col-md-12 mt-3">
+              <div className="col-md-12 text-center mt-3">
                 <button
                   onClick={backHome}
-                  className="btn btn-lg border-radius"
+                  className="btn btn-sm border-radius"
                   type="submit"
                 >
                   Go Back to Home

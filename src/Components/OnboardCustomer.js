@@ -39,24 +39,32 @@ function OnboardCustomer() {
       )
       .then((res) => {
         console.log(res);
-        if (res.data.ErrorMessage === "Member Details Updated") {
-          alert("Member Details Already Updated", res.data.ErrorMessage);
+
+        if (res.data.ErrorMessage === "Member Created Sucessfully") {
+          alert("Created Sucessfully", res.data.ErrorMessage);
           history(
             "/onboardsuccess",
             // { state: userValues.mobile },
-            { state: toolupdated }
+            { state: tooladded }
           );
-        } else if (res.data.ErrorMessage === "Member Creation Failed") {
-          alert("Created Succesfully", res.data.ErrorMessage);
+        } else if (res.data.ErrorMessage === "Member Details Updated") {
+          alert("Updated Succesfully", res.data.ErrorMessage);
           history(
             "/onboardsuccess",
 
-            { state: tooladded }
+            { state: toolupdated }
           );
         } else if (res.data.ErrorMessage === "Member update Failed") {
           alert("Member update Failed", res.data.ErrorMessage);
-        } else {
-          alert("all fields required", res.data.ErrorMessage);
+        } else if (
+          userValues.mobile === "" &&
+          userValues.firstName === "" &&
+          userValues.dob === "" &&
+          userValues.vehicle === ""
+        ) {
+          alert("All fields required");
+        } else if (res.data.ErrorMessage === "Mobile Not Found") {
+          alert("All Fields required");
         }
       })
       .catch((err) => console.log(err));
@@ -74,11 +82,11 @@ function OnboardCustomer() {
         <div className="mt-5 row">
           <label
             htmlFor="inputPassword1"
-            className="col-sm-6 col-form-label textR"
+            className="col-sm-6 col-form-label inputMob textR"
           >
             Enter Customer First Name <span>*</span>
           </label>
-          <div className="col-sm-6">
+          <div className="col-sm-6 inputMob">
             <input
               type="text"
               name="firstName"
@@ -91,11 +99,11 @@ function OnboardCustomer() {
 
           <label
             htmlFor="inputPassword2"
-            className="col-sm-6 col-form-label textR mt-3"
+            className="col-sm-6 col-form-label inputMob textR"
           >
             Enter Customer Last Name
           </label>
-          <div className="col-sm-6 mt-3">
+          <div className="col-sm-6 inputMob">
             <input
               type="text"
               name="lastName"
@@ -108,11 +116,11 @@ function OnboardCustomer() {
 
           <label
             htmlFor="inputPassword3"
-            className="col-sm-6 col-form-label textR mt-3"
+            className="col-sm-6 col-form-label inputMob textR"
           >
             Enter Customer DOB <span>*</span>
           </label>
-          <div className="col-sm-6 mt-3">
+          <div className="col-sm-6 inputMob">
             <input
               type="date"
               name="dob"
@@ -125,11 +133,11 @@ function OnboardCustomer() {
 
           <label
             htmlFor="inputPassword4"
-            className="col-sm-6 col-form-label textR mt-3"
+            className="col-sm-6 col-form-label inputMob textR"
           >
             Enter Customer Mobile Number <span>*</span>
           </label>
-          <div className="col-sm-6 mt-3">
+          <div className="col-sm-6 inputMob">
             <input
               type="text"
               name="mobile"
@@ -142,11 +150,11 @@ function OnboardCustomer() {
 
           <label
             htmlFor="inputPassword5"
-            className="col-sm-6 col-form-label textR mt-3"
+            className="col-sm-6 col-form-label inputMob textR"
           >
             Enter Customer Vehicle Number <span>*</span>
           </label>
-          <div className="col-sm-6 mt-3">
+          <div className="col-sm-6 inputMob">
             <input
               type="text"
               name="vehicle"
@@ -158,7 +166,7 @@ function OnboardCustomer() {
           </div>
 
           {/* <div className="row justify-content-center mt-3"> */}
-          <div className="col-3 offset-3 col-md-3 offset-md-6 col-sm-3 offset-sm-1 col-3 offset-1 mt-3">
+          <div className="col-md-12 text-center mt-3">
             <button
               onClick={handleSubmit}
               className="btn btn-lg border-radius"
