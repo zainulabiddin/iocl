@@ -11,7 +11,14 @@ function OnboardCustomer() {
     vehicle: "",
   };
   const [userValues, setUserValues] = useState(initialValues);
-
+  const tooladded = {
+    mobile: userValues.mobile,
+    add: "Added",
+  };
+  const toolupdated = {
+    mobile: userValues.mobile,
+    update: "Updated",
+  };
   const history = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,9 +41,18 @@ function OnboardCustomer() {
         console.log(res);
         if (res.data.ErrorMessage === "Member Details Updated") {
           alert("Member Details Already Updated", res.data.ErrorMessage);
+          history(
+            "/onboardsuccess",
+            // { state: userValues.mobile },
+            { state: toolupdated }
+          );
         } else if (res.data.ErrorMessage === "Member Creation Failed") {
           alert("Created Succesfully", res.data.ErrorMessage);
-          history("/onboardsuccess", { state: userValues.mobile });
+          history(
+            "/onboardsuccess",
+
+            { state: tooladded }
+          );
         } else if (res.data.ErrorMessage === "Member update Failed") {
           alert("Member update Failed", res.data.ErrorMessage);
         } else {

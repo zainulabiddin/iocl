@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const CustomerSuccess = () => {
   const history = useNavigate();
   const location = useLocation();
+  console.log(location);
   const navigate = () => {
     history("/accruepoint");
   };
@@ -20,8 +21,9 @@ const CustomerSuccess = () => {
         <div className="mt-5 row">
           <div className="col-md-12">
             <p className="text-center">
-              Customer Mobile Number {location.state} Successfully added/updated
-              in Loyalty System
+              Customer Mobile Number {location.state.mobile} Successfully{" "}
+              {location.state.add}
+              {location.state.update} in Loyalty System
             </p>
           </div>
           <div className="col-md-5 offset-sm-4">
