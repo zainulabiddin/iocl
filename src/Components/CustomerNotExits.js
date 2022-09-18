@@ -1,8 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const CustomerNotExits = () => {
   const history = useNavigate();
+  const location = useLocation();
   const home = () => {
     history("/");
   };
@@ -24,7 +25,8 @@ const CustomerNotExits = () => {
 
               <div className="col-12 col-xs-12 col-sm-12 mt-5">
                 <p className="text-center">
-                  Customer Mobile Number dose not exists in Loyalty System
+                  Customer Mobile Number {location.state} dose not exists in
+                  Loyalty System
                 </p>
               </div>
               <div className="col-md-9 offset-md-4 col-sm-9 offset-sm-3 justify-content-center mt-2">

@@ -32,9 +32,15 @@ function OnboardCustomer() {
       )
       .then((res) => {
         console.log(res);
-        if (res.data.ErrorMessage === "Member Created Sucessfully") {
-          // alert("Please fill the Mobile Number");
-          history("/customerexits");
+        if (res.data.ErrorMessage === "Member Details Updated") {
+          alert("Member Details Already Updated", res.data.ErrorMessage);
+        } else if (res.data.ErrorMessage === "Member Creation Failed") {
+          alert("Created Succesfully", res.data.ErrorMessage);
+          history("/onboardsuccess", { state: userValues.mobile });
+        } else if (res.data.ErrorMessage === "Member update Failed") {
+          alert("Member update Failed", res.data.ErrorMessage);
+        } else {
+          alert("all fields required", res.data.ErrorMessage);
         }
       })
       .catch((err) => console.log(err));

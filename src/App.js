@@ -16,15 +16,24 @@ const App = () => {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<IoclDetails />} />
-          <Route path="/searchcustomer" element={<SearchCustomer />} />
-          <Route path="/customerexits" element={<CustomerExits />} />
-          <Route path="/customernotexits" element={<CustomerNotExits />} />
-          <Route path="/onboardcustomer" element={<OnboardCustomer />} />
-          <Route path="/accruepoint" element={<AccruePoint />} />
-          <Route path="/onboardsuccess" element={<OnboardSuccess />} />
-          <Route path="/accuresuccess" element={<AccureSuccess />} />
+          <Route exact path="/" element={<IoclDetails />} />
+          <Route exact path="/searchcustomer" element={<SearchCustomer />} />
+          <Route exact path="/customerexits" element={<CustomerExits />} />
+          <Route
+            exact
+            path="/customernotexits"
+            element={<CustomerNotExits />}
+          />
+          <Route exact path="/onboardcustomer" element={<OnboardCustomer />} />
+          <Route exact path="/accruepoint" element={<AccruePoint />} />
+          <Route exact path="/onboardsuccess" element={<OnboardSuccess />} />
+          <Route exact path="/accuresuccess" element={<AccureSuccess />} />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            exact
+            path="/customerexits"
+            element={<Navigate to="/" replace />}
+          />
         </Routes>
       </BrowserRouter>
     </>

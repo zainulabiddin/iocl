@@ -29,10 +29,11 @@ const SearchCustomer = () => {
       .then((res) => {
         console.log(res);
         if (res.data.ErrorMessage === "Success") {
-          // alert("Please fill the Mobile Number");
-          navigate("/customerexits");
+          navigate("/customerexits", { state: mobile });
+        } else if (res.data.ErrorMessage === "No Mobile Found") {
+          navigate("/customernotexits", { state: mobile });
         } else {
-          navigate("/customernotexits");
+          alert("Please fill Mobile Number");
         }
       })
       .catch((err) => console.log(err));

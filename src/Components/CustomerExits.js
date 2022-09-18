@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const CustomerExits = (props) => {
   const navigate = useNavigate();
-
+  const location = useLocation();
+  console.log(location);
   const goHome = () => {
     navigate("/accruepoint");
   };
@@ -20,7 +21,7 @@ const CustomerExits = (props) => {
         <div className="mt-5 row">
           <div className="col-md-12">
             <p className="text-center">
-              Customer Mobile Number {props.mobile} already exists in Loyalty
+              Customer Mobile Number {location.state} already exists in Loyalty
               System
             </p>
           </div>

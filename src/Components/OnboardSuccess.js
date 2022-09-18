@@ -1,8 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const CustomerSuccess = (props) => {
+const CustomerSuccess = () => {
   const history = useNavigate();
+  const location = useLocation();
   const navigate = () => {
     history("/accruepoint");
   };
@@ -19,7 +20,7 @@ const CustomerSuccess = (props) => {
         <div className="mt-5 row">
           <div className="col-md-12">
             <p className="text-center">
-              Customer Mobile Number {props.mobile} Successfully added/updated
+              Customer Mobile Number {location.state} Successfully added/updated
               in Loyalty System
             </p>
           </div>
