@@ -44,6 +44,26 @@ const IoclDetails = () => {
                   Accrue Loyalty Point
                 </button> */}
               </div>
+              <div className="col-md-12 text-center mt-3">
+                {/* <iframe
+              src="https://cpd-cpd4iocl.iocldemo-087848a71e03129c5fc8052c9aef35b0-0000.eu-gb.containers.appdomain.cloud/cognosanalytics/cpd4iocl/bi/?perspective=dashboard&amp;pathRef=.public_folders%2FIOCLDemoV2%2FSVOC_V1&amp;closeWindowOnLastView=true&amp;ui_appbar=false&amp;ui_navbar=false&amp;shareMode=embedded&amp;action=view&amp;mode=dashboard&amp;subView=model00000182a606a5b2_00000000"
+              width="100%"
+              height="200"
+              frameborder="0"
+              gesture="media"
+              allow="encrypted-media"
+              allowfullscreen=""
+            ></iframe> */}
+                <a
+                  href="https://cpd-cpd4iocl.iocldemo-087848a71e03129c5fc8052c9aef35b0-0000.eu-gb.containers.appdomain.cloud/cognosanalytics/cpd4iocl/bi/?perspective=dashboard&pathRef=.public_folders%2FIOCLDemoV2%2FSVOC_V1&action=view&mode=dashboard&subView=model00000182a606a5b2_00000000"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <button className="btn btn-sm border-radius">
+                    Customer 360
+                  </button>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -19,37 +19,42 @@ function OnboardCustomer() {
     mobile: userValues.mobile,
     update: "Updated",
   };
-  const history = useNavigate();
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserValues({ ...userValues, [name]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    let d = new Date(userValues.dob);
+
+    let date = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
+    console.log(date);
+
     axios
       .post(
         "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/MemberService",
         {
           first_name: userValues.firstName,
           last_name: userValues.lastName,
-          dob: userValues.dob,
+          dob: date,
           mobile: userValues.mobile,
           vehicle: userValues.vehicle,
         }
       )
       .then((res) => {
-        console.log(res);
-
+        console.log("Respose", res);
         if (res.data.ErrorMessage === "Member Created Sucessfully") {
           alert("Created Sucessfully", res.data.ErrorMessage);
-          history(
+          navigate(
             "/onboardsuccess",
             // { state: userValues.mobile },
             { state: tooladded }
           );
         } else if (res.data.ErrorMessage === "Member Details Updated") {
           alert("Updated Succesfully", res.data.ErrorMessage);
-          history(
+          navigate(
             "/onboardsuccess",
 
             { state: toolupdated }

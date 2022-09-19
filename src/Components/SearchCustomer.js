@@ -29,7 +29,11 @@ const SearchCustomer = () => {
       .then((res) => {
         console.log(res);
         if (res.data.ErrorMessage === "Success") {
-          navigate("/customerexits", { state: mobile });
+          let obj = {
+            mobile: mobile,
+            MemberNumber: res.data.MemberNumber,
+          };
+          navigate("/customerexits", { state: obj });
         } else if (res.data.ErrorMessage === "No Mobile Found") {
           navigate("/customernotexits", { state: mobile });
         } else {

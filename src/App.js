@@ -18,6 +18,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<IoclDetails />} />
           <Route exact path="/searchcustomer" element={<SearchCustomer />} />
+
           <Route exact path="/customerexits" element={<CustomerExits />} />
           <Route
             exact
@@ -29,11 +30,6 @@ const App = () => {
           <Route exact path="/onboardsuccess" element={<OnboardSuccess />} />
           <Route exact path="/accuresuccess" element={<AccureSuccess />} />
           <Route path="*" element={<Navigate to="/" replace />} />
-          <Route
-            exact
-            path="/customerexits"
-            element={<Navigate to="/" replace />}
-          />
         </Routes>
       </BrowserRouter>
     </>

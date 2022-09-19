@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function AccruePoint() {
   const initialValues1 = {
-    memberNumber: "1-5036481",
+    memberNumber: "",
     amount: "",
     points: "1",
     process: "null",
-    product: "",
+    product: "Petrol",
     transactionType: "Accrual",
-    txnNumber: "IOCL_0079",
+    txnNumber: "",
     dealerCode: "",
   };
 
   const [userValues1, setUserValues1] = useState(initialValues1);
+  const location = useLocation();
+  console.log(location);
   const navigate = useNavigate();
   const backHome = () => {
     navigate("/");
@@ -29,7 +31,7 @@ function AccruePoint() {
       .post(
         " https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/CreateTransaction",
         {
-          member_number: userValues1.memberNumber,
+          member_number: location.state,
           amount: userValues1.amount,
           points: userValues1.points,
           process: userValues1.process,
@@ -37,25 +39,26 @@ function AccruePoint() {
           transaction_type: userValues1.transactionType,
           txn_number: userValues1.txnNumber,
           dealer_code: userValues1.dealerCode,
-          MemberNumber: userValues1.memberNumber,
         }
       )
       .then((res) => {
         console.log(res);
-        if (res.data.ErrorMessage === "Duplicate Transaction") {
-          alert("Duplicate Transaction", res.data.ErrorMessage);
+        if (res.data.ErrorMessage === "No Member Found") {
+          alert("No Member Found", res.data.ErrorMessage);
           // navigate(
           //   "/accuresuccess"
           //   // { state: userValues.mobile },
           // );
-        } else if (res.data.ErrorMessage === "No Member Found") {
+        } else if (res.data.ErrorMessage === "Duplicate Transaction") {
+          alert("Duplicate Transaction", res.data.ErrorMessage);
+        } else if (res.data.ErrorMessage === "Success") {
           alert("Success", res.data.ErrorMessage);
           navigate(
             "/accuresuccess"
             // { state: userValues.mobile },
           );
         } else {
-          alert("all fields required", res.data.ErrorMessage);
+          alert("All fileds Required", res.data.ErrorMessage);
         }
       })
       .catch((err) => console.log(err));
@@ -83,7 +86,7 @@ function AccruePoint() {
               type="text"
               disabled
               name="memberNumber"
-              value={userValues1.memberNumber}
+              value={location.state}
               onChange={handleChange}
               className="form-control"
               id="inputPassword1"
@@ -94,7 +97,7 @@ function AccruePoint() {
             htmlFor="inputPassword2"
             className="col-md-6 col-form-label textR"
           >
-            Enter Transaction Amount <span>*</span>
+            Amount of Fuel Purchased <span>*</span>
           </label>
           <div className="col-md-6 inputMob">
             <input
@@ -154,6 +157,7 @@ function AccruePoint() {
           <div className="col-md-6 inputMob">
             <select
               name="product"
+              value={userValues1.product}
               className="custom-select form-select"
               id="inputPassword5"
               onChange={handleChange}
@@ -161,10 +165,10 @@ function AccruePoint() {
               <option>
                 <i className="fa fa-angle-double-right"></i>Select
               </option>
-              <option selected values="Diesel">
-                Diesel
+              <option value="Diesel">Diesel</option>
+              <option selected value="Petrol">
+                Petrol
               </option>
-              <option values="Petrol">Petrol</option>
             </select>
           </div>
 
@@ -200,7 +204,7 @@ function AccruePoint() {
           <div className="col-md-6 inputMob">
             <input
               type="text"
-              disabled
+              name="txnNumber"
               value={userValues1.txnNumber}
               onChange={handleChange}
               className="form-control"

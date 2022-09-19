@@ -1,13 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const CustomerExits = (props) => {
+  const [memberNumber1, setMemberNumber1] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  debugger;
   console.log(location);
-  const goHome = () => {
-    navigate("/accruepoint");
+  // const goHome = () => {
+  //   navigate("/accruepoint");
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "https://apis-minimum-gw-gateway-cp4i-apic.itzroks-6610027dtr-ni3dgu-6ccd7f378ae819553d37d5f2ee142bd6-0000.eu-gb.containers.appdomain.cloud/iocl/sandbox/iocl-apis/GetMemberBalance",
+        {
+          MemberNumber: memberNumber1,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.data.ErrorMessage === "Please pass Mobile or Member Number") {
+          navigate("/Accruepoint", { state: location.state.MemberNumber });
+        } else {
+          alert("Please fill Mobile Number");
+        }
+      })
+      .catch((err) => console.log(err));
   };
+
   return (
     <>
       <div className="container containerR">
@@ -21,38 +45,19 @@ const CustomerExits = (props) => {
         <div className="mt-5 row">
           <div className="col-md-12">
             <p className="text-center">
-              Customer Mobile Number {location.state} already exists in Loyalty
-              System
+              {memberNumber1}
+              Customer Mobile Number {location.state.mobile} already exists in
+              Loyalty System
             </p>
           </div>
           <div className="col-md-12 text-center">
             <button
-              onClick={goHome}
+              onClick={handleSubmit}
               className="btn btn-lg border-radius"
               type="button"
             >
               Accrue Loyalty Point
             </button>
-          </div>
-          <div className="col-md-12 text-center mt-3">
-            {/* <iframe
-              src="https://cpd-cpd4iocl.iocldemo-087848a71e03129c5fc8052c9aef35b0-0000.eu-gb.containers.appdomain.cloud/cognosanalytics/cpd4iocl/bi/?perspective=dashboard&amp;pathRef=.public_folders%2FIOCLDemoV2%2FSVOC_V1&amp;closeWindowOnLastView=true&amp;ui_appbar=false&amp;ui_navbar=false&amp;shareMode=embedded&amp;action=view&amp;mode=dashboard&amp;subView=model00000182a606a5b2_00000000"
-              width="100%"
-              height="200"
-              frameborder="0"
-              gesture="media"
-              allow="encrypted-media"
-              allowfullscreen=""
-            ></iframe> */}
-            <a
-              href="https://cpd-cpd4iocl.iocldemo-087848a71e03129c5fc8052c9aef35b0-0000.eu-gb.containers.appdomain.cloud/cognosanalytics/cpd4iocl/bi/?perspective=dashboard&pathRef=.public_folders%2FIOCLDemoV2%2FSVOC_V1&action=view&mode=dashboard&subView=model00000182a606a5b2_00000000"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button className="btn btn-sm border-radius">
-                Customer 360 link
-              </button>
-            </a>
           </div>
         </div>
       </div>
