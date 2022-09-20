@@ -60,7 +60,7 @@ const IoclDetails = () => {
                   rel="noreferrer"
                 >
                   <button className="btn btn-sm border-radius">
-                    Customer 390
+                    Customer 360
                   </button>
                 </a>
               </div>
