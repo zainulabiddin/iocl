@@ -1,8 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AccureSuccess = (props) => {
   const history = useNavigate();
+  const location = useLocation();
   const navigate = () => {
     history("/");
   };
@@ -20,13 +21,13 @@ const AccureSuccess = (props) => {
           <div className="col-md-12">
             <p className="text-center">
               Loyalty Points Successfully added for Customer Mobile Number
-              9876543301.
+              {location.state.mobile}.
               <br />
-              New Loyalty Balance is 80
+              New Loyalty Balance is {location.state.MemberBalance}
               <br />
-              Transaction ID: 1-2ZYBT
+              Transaction ID: {location.state.TxnId}
               <br />
-              Accrual: XR Base Points = 20; Amount Spent = 1500; INR=0
+              Accrual: {location.state.PointsAwarded}
             </p>
           </div>
           <div className="col-md-5 offset-sm-4">

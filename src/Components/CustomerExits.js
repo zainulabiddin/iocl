@@ -6,7 +6,6 @@ const CustomerExits = (props) => {
   const [memberNumber1, setMemberNumber1] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  debugger;
   console.log(location);
   // const goHome = () => {
   //   navigate("/accruepoint");
@@ -45,7 +44,6 @@ const CustomerExits = (props) => {
         <div className="mt-5 row">
           <div className="col-md-12">
             <p className="text-center">
-              {memberNumber1}
               Customer Mobile Number {location.state.mobile} already exists in
               Loyalty System
             </p>

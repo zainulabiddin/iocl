@@ -10,8 +10,8 @@ function AccruePoint() {
     process: "null",
     product: "Petrol",
     transactionType: "Accrual",
-    txnNumber: "",
-    dealerCode: "",
+    txnNumber: "IOCL_0079",
+    dealerCode: "D1012",
   };
 
   const [userValues1, setUserValues1] = useState(initialValues1);
@@ -45,18 +45,17 @@ function AccruePoint() {
         console.log(res);
         if (res.data.ErrorMessage === "No Member Found") {
           alert("No Member Found", res.data.ErrorMessage);
-          // navigate(
-          //   "/accuresuccess"
-          //   // { state: userValues.mobile },
-          // );
         } else if (res.data.ErrorMessage === "Duplicate Transaction") {
           alert("Duplicate Transaction", res.data.ErrorMessage);
         } else if (res.data.ErrorMessage === "Success") {
           alert("Success", res.data.ErrorMessage);
-          navigate(
-            "/accuresuccess"
-            // { state: userValues.mobile },
-          );
+          let obj1 = {
+            mobile: res.data.mobile,
+            TxnId: res.data.TxnId,
+            PointsAwarded: res.data.PointsAwarded,
+            MemberBalance: res.data.MemberBalance,
+          };
+          navigate("/accuresuccess", { state: obj1 });
         } else {
           alert("All fileds Required", res.data.ErrorMessage);
         }
