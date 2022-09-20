@@ -39,12 +39,12 @@ const App = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                color: "black",
+                color: "white",
                 height: "500px",
                 zIndex: "999999",
               }}
             >
-              Loading ...
+              Loading...
             </h1>
           }
         >
