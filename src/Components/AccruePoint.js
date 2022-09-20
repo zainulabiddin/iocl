@@ -220,6 +220,7 @@ function AccruePoint() {
           <div className="col-md-6 inputMob">
             <input
               type="text"
+              disabled
               value={userValues1.dealerCode}
               name="dealerCode"
               onChange={handleChange}
