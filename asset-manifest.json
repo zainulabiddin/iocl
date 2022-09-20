@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/iocl/static/css/main.d6eb536b.css",
+    "main.js": "/iocl/static/js/main.69afe553.js",
+    "static/js/452.dbf3a054.chunk.js": "/iocl/static/js/452.dbf3a054.chunk.js",
+    "static/js/782.1cef04ad.chunk.js": "/iocl/static/js/782.1cef04ad.chunk.js",
+    "static/js/34.0293d317.chunk.js": "/iocl/static/js/34.0293d317.chunk.js",
+    "static/js/511.57f87c12.chunk.js": "/iocl/static/js/511.57f87c12.chunk.js",
+    "static/js/126.807ada05.chunk.js": "/iocl/static/js/126.807ada05.chunk.js",
+    "static/js/379.25d38ee9.chunk.js": "/iocl/static/js/379.25d38ee9.chunk.js",
+    "static/js/268.e59fd0ed.chunk.js": "/iocl/static/js/268.e59fd0ed.chunk.js",
+    "static/js/28.f690cb5d.chunk.js": "/iocl/static/js/28.f690cb5d.chunk.js",
+    "static/js/787.d13832d1.chunk.js": "/iocl/static/js/787.d13832d1.chunk.js",
+    "static/js/569.e8115d4e.chunk.js": "/iocl/static/js/569.e8115d4e.chunk.js",
+    "index.html": "/iocl/index.html",
+    "main.d6eb536b.css.map": "/iocl/static/css/main.d6eb536b.css.map",
+    "main.69afe553.js.map": "/iocl/static/js/main.69afe553.js.map",
+    "452.dbf3a054.chunk.js.map": "/iocl/static/js/452.dbf3a054.chunk.js.map",
+    "782.1cef04ad.chunk.js.map": "/iocl/static/js/782.1cef04ad.chunk.js.map",
+    "34.0293d317.chunk.js.map": "/iocl/static/js/34.0293d317.chunk.js.map",
+    "511.57f87c12.chunk.js.map": "/iocl/static/js/511.57f87c12.chunk.js.map",
+    "126.807ada05.chunk.js.map": "/iocl/static/js/126.807ada05.chunk.js.map",
+    "379.25d38ee9.chunk.js.map": "/iocl/static/js/379.25d38ee9.chunk.js.map",
+    "268.e59fd0ed.chunk.js.map": "/iocl/static/js/268.e59fd0ed.chunk.js.map",
+    "28.f690cb5d.chunk.js.map": "/iocl/static/js/28.f690cb5d.chunk.js.map",
+    "787.d13832d1.chunk.js.map": "/iocl/static/js/787.d13832d1.chunk.js.map",
+    "569.e8115d4e.chunk.js.map": "/iocl/static/js/569.e8115d4e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d6eb536b.css",
+    "static/js/main.69afe553.js"
+  ]
+}
