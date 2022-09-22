@@ -50,7 +50,7 @@ const SearchCustomer = () => {
           <div className="col-xs-12 col-md-12 col-sm-12 text-center">
             <div className="">
               <h2 className="Heading-text">IOCL Loyalty System</h2>
-              <h3 className="">Search Customer Test</h3>
+              <h3 className="">Search Customer</h3>
 
               <label
                 htmlFor="inputPassword"
